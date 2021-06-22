@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="mt-5"></h2>
+
+            <p>
+                Are you sure you want to delete "<strong>{{enrol.subject}}</strong>"? 
+                <br>
+                <a href="{% url 'main:enrolment' pk=enrol.pk %}">Cancel</a>
+            </p>
+
+            
+            <br><br>
+
+            <form method="POST" class="">
+                {% csrf_token %}
+                
+
+                <input type="submit" class="btn btn-sm btn-danger" value="Delete" />
+            </form>
+
+            <p class="mt-5" style="font-size: 12px; color: grey; margin-top: 20px;">
+                NB: You can always add the subject from the home page at any time.
+            </p>
+    </div>
+    </div>
+
+</div>
+
+<style>
+    
+</style>
+
+<script>
+    // $('#id_student').attr('hidden', true).addClass('hidden')
+    // var studentInput = document.getElementById('id_student')
+    // studentInput.setAttribute("type", "hidden")
+</script>
+{% endblock %}

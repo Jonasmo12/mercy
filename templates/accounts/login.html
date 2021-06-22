@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}<title>MERCY . | Sign In</title>{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="mt-5 mb-5">Sign In.</h2>
+
+            {% include '_msg.html' %}
+            
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="schoolID">School ID:</label>
+                    <input name="schoolID" class="form-control" placeholder="school ID" type="number" />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input name="password" class="form-control" placeholder="Password" type="password" />
+                </div>
+                <br><br>
+
+                <input type="submit" class="btn btn-primary" value="Login" />
+            </form>
+            <p class="text-right mt-5">
+                <a class="btn btn-sm btn-danger" href="/">return home</a>
+            </p>
+
+            <p class="mt-5" style="font-size: 12px; color: grey; margin-top: 20px;">
+                NB: We do not store your password, it is a secret between you and MERCY . .
+            </p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

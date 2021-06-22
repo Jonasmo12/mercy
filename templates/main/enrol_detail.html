@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="col-lg-12">
+            
+            <h2>
+                <a href="{% url 'main:subject' enrol.pk subject.id %}">{{ enrol.subject }}</a>
+            </h2>
+            <p style="font-size: 12px; color: gray">
+                <b>Active Since:</b> {{ enrol.created }} <br>
+                <b>Student:</b> {{enrol.student}}
+            </p>
+            <p><a class="btn btn-sm btn-danger" href="{% url 'main:deleteEnrolment' pk=enrol.pk %}">Delete</a></p>
+            
+            
+        </div>
+    </div>
+
+    <div class="column not-visible">
+        <h4>Assignments</h4>
+        <a href="">Assignment 1</a>
+    </div>
+</div>
+
+
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            return to <a href="{% url 'main:home' %}">home</a>
+        </div>
+    </div>
+
+</div>
+
+
+<style>
+
+    
+</style>
+
+
+
+{% endblock %}

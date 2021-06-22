@@ -1,0 +1,77 @@
+{% load static %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <a class="navbar-brand" href="/">MERCY .</a>
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		  <li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="{% url 'main:home' %}">Home</a>
+		  </li>
+		  {% if request.user.is_authenticated %}
+		  <li class="nav-item">
+			<a class="nav-link" href="{% url 'main:profile' %}">Profile</a>
+		  </li>
+		  {% else %}
+		  <li class="nav-item">
+			<a class="nav-link" href="">Features</a>
+		  </li>
+
+		  <li class="nav-item">
+			<a class="nav-link" href="">About</a>
+		  </li>
+
+		  <li class="nav-item">
+			<a class="nav-link" href="">Contact</a>
+		  </li>
+
+		  {% endif %}
+		  
+		</ul>
+		<div class="form-inline my-2 my-lg-0">
+
+
+
+			{% if request.user.is_authenticated %}
+			<a href="" class="btn btn-dark"data-bs-toggle="modal" data-bs-target="#staticBackdrop">Logout</a>
+	  
+			{% else %}
+			<a href="{% url 'accounts:login' %}" class="btn btn-dark">Login</a>
+	  
+			{% endif %}
+	  
+	  
+	  
+	  
+		  </div>
+	  </div>
+	</div>
+  </nav>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="staticBackdropLabel">Logout</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  <p>Are you sure you want to logout?</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+		  <a style="color: #fff !important;" href="{% url 'accounts:logout' %}" class="btn btn-sm btn-primary">Yes, confirm.</a>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+<script>
+	
+</script>

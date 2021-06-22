@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include '_navbar.html' %}
+
+
+
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="lead">{{request.user.student}}</p>
+            <p>
+                {{ student.email }} <br> 
+            </p>
+
+            <hr>
+            <p style="font-size: 10px;">
+                <b>Last Login:</b> {{ student.last_login }} <br>
+                <b>Date Joined:</b> {{ student.date_joined }} <br>
+            </p>
+
+            
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <p class="col-lg-12">
+            return to <a href="{% url 'main:home' %}">home</a>
+        </p>
+    </div>
+
+</div>
+<style>
+
+    
+</style>
+
+
+
+{% endblock %}

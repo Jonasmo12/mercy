@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+{% if request.user.is_authenticated %}
+{% include '_navbar.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding-top: 150px;">
+            {% for enrol in enrol %}
+            <div class="subject-heading">
+                <a href="{% url 'main:enrolment' pk=enrol.pk %}">
+                    <h4>{{ enrol.subject | title }}</h4>
+                </a>
+            </div>
+            <hr>
+            {% endfor %}
+
+            <p class="text-right mt-5">
+                <a class="browse-subjects-link" data-bs-toggle="modal" data-bs-target="#browseSubjects" href="">Add Subjects</a>
+            </p>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="browseSubjects" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Subject.</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    {{form.errors}}
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form | crispy }}
+
+                        <br>
+                        
+                        <input type="submit" value="Add" class="btn btn-md btn-primary">
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="">
+                <h1 class="bg-main-text">
+                    Closing gaps in education that affect students and increase university access.
+                </h1>
+                <h4 class="bg-sub-text" style="color: #fff; text-shadow: 0px 6px 11px black;">
+                    We are a nonprofit organization.
+                </h4>
+                <a href="{% url 'accounts:login' %}" class="btn btn-sm btn-primary">Login</a>
+                <span style="color: #fff;">or</span> 
+                <a href="" class="btn btn-lg btn-secondary" data-bs-toggle="modal" data-bs-target="#studentOrTeacherSignUp">Sign Up</a>
+            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="studentOrTeacherSignUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">Sign Up.</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <a href="{% url 'accounts:registerStudent' %}" class="btn btn-md btn-primary">Continue</a>
+                          <br><br>
+                          Please make sure you have an active email address before signing up, because your school ID will be sent to the
+                          provided email address for varification purposes. <br><br>
+
+                          Should you wish to create an email address, visit <a target="_blank" href="http://www.gmail.com">gmail.com</a> or <a target="_blank" href="http://www.outlook.com">outlook.com</a>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Cancel</button>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4 box" id="about">
+            <h4 class="box-heading">
+                <a href="" class="" data-bs-toggle="modal" data-bs-target="#aboutModal">About.</a>
+            </h4>
+        </div>
+        <div class="col-lg-4 box" id="donations">
+            <h4 class="box-heading">
+                <a href="" class="" data-bs-toggle="modal" data-bs-target="#donationsModal">Donations.</a>
+            </h4>
+        </div>
+        <div class="col-lg-4 box" id="support">
+            <h4 class="box-heading">
+                <a href="" class="" data-bs-toggle="modal" data-bs-target="#supportModal">Support.</a>
+            </h4>
+        </div>
+
+    </div>
+</div>
+
+<!------- 
+<strong>DISCERNDLearn</strong> is an online school for high school pupils who do not have access to quality education of
+            the standarts upheld by private schools -government pupils. Note that, it is not a replacement for private school education, it's for those who have the desire to achieve optimal grades which will allow them to study at top universities.
+
+            <br><br>
+
+            The application is developed to bridge or supplement the gap, by distributing proper education amongst South African Youth. 
+            However, the subject taught will build upon knowledge obtained from school content. Our content is crafted by inspiring 
+            educators who share the same vision and values as us. As the saying goes "education is the key to success" but we say "proper
+            education is the key to success".
+ ----->
+
+<!-- Modal -->
+<div class="modal fade" id="aboutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">About.</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="lead">Bridging inequity in education.</p>
+              <p>
+                  We aim to provide world-class content to students through our digital platforms and encourage learning no matter the circumstances. As a nonprofit organization, We work alongside educators and other nonprofit organizations in providing learning content, in their efforts to transform education and encourage sound learning.
+              </p>
+
+              <p>
+                
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-md btn-danger" data-bs-dismiss="modal">Close</button>
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="donationsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Donations.</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="lead">Make a donation today</p>
+                <p>
+                    Together, we can call out educational inequality and support practices that close opportunity gaps and support high academic achievement.
+                </p>
+                <a style="" target="_blank" href="https://pay.yoco.com/mercy">Donate</a>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-md btn-danger" data-bs-dismiss="modal">Close</button>
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="supportModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Support.</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                
+                <div class="col-sm-4 col-xs-6 second-box">
+                    <h1><span class="glyphicon glyphicon-home"></span></h1>
+                    <h3>Location</h3>
+                    <p>2075 Block UX, Mabopane, Pretoria, 0190</p><br>
+                </div>
+                <div class="col-sm-4 col-xs-6 third-box">
+                    <h1><span class="glyphicon glyphicon-send"></span></h1>
+                    <h3>E-mail</h3>
+                    <p>mercy.@gmail.com.com</p><br>
+                </div>
+                <div class="col-sm-4 col-xs-6 fourth-box">
+                    <h1><span class="glyphicon glyphicon-leaf"></span></h1>
+                    <h3>Facebook</h3>
+                    <p>Mercy Early Learning Centre</p><br>
+                </div>
+                </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-md btn-danger" data-bs-dismiss="modal">Close</button>
+              
+            </div>
+        </div>
+    </div>
+</div>
+                
+
+
+{% include 'footer.html' %}
+
+{% endif %}
+
+
+<style>
+    /*.subject-heading {
+        height: 5vh;
+        margin-bottom: 15px;
+    }*/
+
+    .form-control {
+        margin-top: 15px !important;
+        border-radius: 0px !important;
+    }
+    #features {
+        background: powderblue;
+    }
+
+    #about {
+        background: black;
+    }
+
+    #donations {
+        background: silver;
+    }
+
+    #support {
+        background: dimgray;
+    }
+    .box-heading {
+        padding-top: 15px;
+    }
+    .browse-subjects-link {
+        color: #7999D9 !important;
+        text-align: right !important;
+    }
+
+    
+    .bg-main-text {
+        margin-top: 150px;
+        color: #fff !important;
+        text-shadow: 0px 6px 11px black;
+    }
+
+.first-box{padding:10px;background:powderblue; color: #fff !important;}
+.second-box{padding:10px; background:black; color: #fff !important;}
+.third-box{padding:10px;background:silver; color: #fff !important;}
+.fourth-box{padding:10px;background:dimgray; color: #fff !important;}
+    
+    .box {
+        height: 20vh;
+    }
+    
+
+</style>
+{% endblock %}

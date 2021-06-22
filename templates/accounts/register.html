@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}<title>MERCY . | Sign Up</title>{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container mt-5">
+
+    <div class="row">
+       <div class="col-lg-6">
+        <h2 class="mt-5">Sign Up.</h2>
+        <p class="lead">Own an account already, login <a href="{% url 'accounts:login' %}">here</a></p>
+
+        {% include '_msg.html' %}
+        
+
+        {{form.errors}}
+
+        <form method="POST" class="form" style="margin-top: 50px">
+            {% csrf_token %}
+
+            {{ form|crispy }}
+
+            
+            <input id="signUpBtn" type="submit" class="btn btn-primary" value="Sign Up" />
+        </form>
+
+        <p class="text-right mt-5">
+            <a class="btn btn-sm btn-danger" href="/">return home</a>
+        </p>
+
+        <p class="mb-5" style="font-size: 12px; color: grey; margin-top: 20px;">
+            NB: We do not store your password.
+        </p>
+       </div>
+    </div>
+
+</div>
+
+<style type="text/css">
+    .form-control {
+        margin-bottom: 20px !important;
+    }
+
+    #signUpBtn {
+        margin-top: 50px;
+    }
+</style>
+
+<script type="text/javascript">
+    console.log('we on!!')
+    const url = window.location.href
+    console.log("url", url)
+
+    const schoolID = document.getElementById('div_id_schoolID')
+    schoolID.style.display = 'none';
+
+   
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% block scripts %}
+<script src="{% static 'js/assignment.js' %}" defer></script>
+{% endblock scripts %}
+
+<div class="ui one column doubling stackable grid container" style="margin-top: 20px;">
+    <div class="column">
+        <div class="ui list">
+            <h1>{{ assignment.title | upper }}</h1>
+            
+            <p style="color: gray;">
+                Number Of Questions: {{ assignment.numberOfQuestions }}<br>
+                Pass Score: {{ assignment.passScore }}%
+            </p>
+            <br>
+            
+            <form method="POST" id="quiz-form" class="ui form transition">
+                {% csrf_token %}
+                <div id="assignment-box"></div>
+                <button type="submit" class="ui primary button small transition" id="submitBtn" style="margin-top: 50px;">Submit</button>
+            </form>
+            <div id="score-box"></div>
+            <div id="result-box"></div>
+        </div>
+    </div>
+
+    
+
+
+    
+
+</div>
+
+<div class="ui one column doubling stackable grid container" style="margin-top: 20px;">
+
+    <div class="column">
+
+        <p class="align right">
+            return to <a class="ui secondary button small" href="{% url 'main:home' %}">home</a>
+        </p>
+    </div>
+
+</div>
+<style>
+
+    
+</style>
+
+
+
+{% endblock %}

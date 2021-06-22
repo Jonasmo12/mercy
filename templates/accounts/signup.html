@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}<title>DISCERNDPlay | Signup</title>{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <h2>Signup.</h2>
+            <p class="lead">Have an account? Login <a href="{% url 'accounts:login' %}">here</a></p>
+            
+            <form class="form" method="POST">
+                {% csrf_token %}
+                {{form | crispy }}
+
+                <input type="submit" value="Signup" class="btn btn btn-primary" />
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
