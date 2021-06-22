@@ -127,6 +127,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 
+STATIC_URL = '/static/'
 STATICFILES_DIRS = BASE_DIR / 'static',
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 TEMPLATE_DIRS = BASE_DIR / 'templates',
