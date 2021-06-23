@@ -45,7 +45,7 @@ def signUpStudentView(request):
                 'If you think this was a mistake please ignore the email. \n \n' + 
                 'mercy-learn.herokuapp.com',
                 settings.EMAIL_HOST_USER,
-                [email],
+                [user],
                 fail_silently=False,
             )
 
