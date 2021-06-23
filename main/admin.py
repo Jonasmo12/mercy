@@ -65,7 +65,6 @@ class TeacherAdmin(admin.ModelAdmin, ExportCsvMixin):
                 return as read only during obj creation.
             """
             return [
-                'createdBy',
                 'groups',
                 'last_login', 
                 'date_joined',
