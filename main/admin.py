@@ -99,10 +99,11 @@ class TeacherAdmin(admin.ModelAdmin, ExportCsvMixin):
             print(name, email, schoolID, password)
 
             send_mail(
-                'Login Details - DISCERNDLearn',
-                'Hi, ' + name + '. \n \n You were added a Teacher on DISCERNDLearn, please find your login details below \n \n' + 
-                'schooldID: ' + schoolID + '.\n' + 
-                'Password: ' + password + '. \n \n If you think this was a mistake please ignore the email.',
+                'Login Details - MERCY .',
+                'Hi, ' + name + '. \n \n You were added as a Teacher on MERCY., please find your login details below \n \n' + 
+                'schoold ID: ' + schoolID + '.\n' + 
+                'Password: ' + password + '. \n \n If you think this was a mistake please ignore the email. \n \n' +
+                'mercy-learn.herokuapp.com',
                 settings.EMAIL_HOST_USER,
                 [email],
                 fail_silently=False,
