@@ -41,7 +41,7 @@ def signUpStudentView(request):
             send_mail(
                 'School ID - MERCY .',
                 'Hi, ' + name + '. \n \n Thank you for signing up, please find your MERCY . school ID below \n \n' + 
-                'schoold ID: ' + schoolID + '.\n \n' + 
+                'schoold ID: ' + str(schoolID) + '.\n \n' + 
                 'If you think this was a mistake please ignore the email. \n \n' + 
                 'mercy-learn.herokuapp.com',
                 settings.EMAIL_HOST_USER,
