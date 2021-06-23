@@ -11,6 +11,7 @@ import json
 from django.http import (
     JsonResponse,
 )
+from django.core.mail import send_mail
 from main.forms import StudentCreationForm, TeacherCreationForm
 from .decorators import unauthenticatedUser
 from main.models import Student, Teacher, Subject
